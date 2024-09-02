@@ -1,14 +1,20 @@
 import { useState } from "react";
 
-export default function CustomForm() {
-  const [task, setTask] = useState("");
+import { PlusIcon } from "@heroicons/react/24/solid";
 
-  const handleChange = (e) => {
-    setTask(e.target.value);
-  };
+export default function CustomForm({ addTask }) {
+  const [task, setTask] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    addTask({
+        name: task,
+        checked: false,
+        id: Date.now()
+    })
+
+
     setTask("");
   };
 
@@ -25,10 +31,15 @@ export default function CustomForm() {
             required
             maxLength={60}
             value={task}
-            onChange={handleChange}
+            onChange={(e) => setTask(e.target.value)}
           />
-          <label htmlFor="task">Enter Task</label>
+          <label htmlFor="task" className="label">
+            Enter Task
+          </label>
         </div>
+        <button className="btn" aria-label="Add Task" type="submit">
+          <PlusIcon className="size-6 text-blue-500" />
+        </button>
       </form>
     </div>
   );
