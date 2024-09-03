@@ -9,7 +9,7 @@ export default function CustomForm({ addTask }) {
     e.preventDefault(); // Prevents the default form submission behavior (page reload).
 
     addTask({
-      // Calls `addTask` with a new task object. 
+      // Calls `addTask` with a new task object.
       // Each task has a name, a checked status (default is false), and a unique ID (current timestamp).
       name: task,
       checked: false,
